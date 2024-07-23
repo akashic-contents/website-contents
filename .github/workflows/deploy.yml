@@ -1,11 +1,9 @@
 name: Deploy on GitHub Pages
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-    types:
-      - closed
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
