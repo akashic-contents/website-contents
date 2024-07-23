@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@akashic-extension/akashic-animation": "4.1.0",
+    "@akashic-extension/akashic-timeline": "3.2.1"
+  }
+}
