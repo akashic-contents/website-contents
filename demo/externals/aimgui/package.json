@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@akashic-extension/aimgui": "1.0.2"
+  }
+}
