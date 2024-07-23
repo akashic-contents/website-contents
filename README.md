@@ -10,7 +10,11 @@ PullRequest を作成後 `release` ラベルを付与してください。
 
 ## generate
 
-次のコマンドを実行することで `./contents` 以下のすべてのディレクトリから `game.json` を自動で検出し、`./dist` ディレクトリに zip ファイルを生成します。
+次のコマンドを実行することで `./dist` ディレクトリと `./public` ディレクトリを生成します。
+
+- `./dist` ディレクトリには `./contents/tutorial-sample` 以下の `game.json` を含むゲームコンテンツの zip ファイルが出力されます。
+
+- `./public` ディレクトリには `./contents` 以下の `game.json` を自動で検出し、実行可能な形態 (`./node_modules` などを含む) のファイル群が出力されます。
 
 ```sh
 npm run generate
