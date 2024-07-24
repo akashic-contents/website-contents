@@ -1,4 +1,4 @@
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, rm, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { exec as _exec } from "node:child_process";
@@ -66,7 +66,7 @@ try {
 
 			const gameJsonPath = join(rootDir, directory, "game.json");
 			if (existsSync(gameJsonPath)) {
-				const gameJson = JSON.parse(await readFile(gameJsonPath, { encoding: "utf-8" }));
+				const gameJson = await readJSON(gameJsonPath);
 				contentsMap[relative(publishDir, directory)] = { gameJson };
 			}
 		}
