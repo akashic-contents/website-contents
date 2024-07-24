@@ -53,22 +53,19 @@ try {
 		const directories = await listGameJsonDirs(rootDir, publishDir);
 
 		for (const directory of directories) {
-			const packageJsonPath = join(rootDir, directory, "package.json");
-			if (existsSync(packageJsonPath)) {
-				console.log(`preparing ${directory}`);
-				const { dependencies } = await readJSON<{ dependencies: Record<string, string> }>(packageJsonPath);
-
-				if (dependencies) {
-					await exec("npm install --omit=dev --ignore-scripts --no-package-lock", { cwd: join(rootDir, directory) });
-					// TODO: この時点で再度 akashic scan globalScripts をすべきかもしれない
-				}
-			}
-
 			const gameJsonPath = join(rootDir, directory, "game.json");
-			if (existsSync(gameJsonPath)) {
-				const gameJson = await readJSON(gameJsonPath);
-				contentsMap[relative(publishDir, directory)] = { gameJson };
-			}
+			const gameJson = await readJSON(gameJsonPath);
+			contentsMap[relative(publishDir, directory)] = { gameJson };
+
+			const packageJsonPath = join(rootDir, directory, "package.json");
+			if (!existsSync(packageJsonPath)) continue;
+
+			console.log(`preparing ${directory}`);
+			const { dependencies } = await readJSON<{ dependencies: Record<string, string> }>(packageJsonPath);
+			if (!dependencies) continue; // devDependencies など実行時に参照されないモジュールは無視する
+
+			await exec("npm install --omit=dev --ignore-scripts --no-package-lock", { cwd: join(rootDir, directory) });
+			// TODO: この時点で再度 akashic scan globalScripts をすべきかもしれない
 		}
 
 		await writeFile(join(publishDir, "contents.json"), JSON.stringify(contentsMap));
