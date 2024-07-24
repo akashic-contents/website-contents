@@ -1,4 +1,4 @@
-import { cp, mkdir, rm } from "node:fs/promises";
+import { cp, mkdir, rm, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { exec as _exec } from "node:child_process";
@@ -19,6 +19,12 @@ const tutorialSamplesDir = join(contentsDir, "tutorial-samples");
 const distDir = join(rootDir, "dist");
 const publishDir = join(rootDir, "public");
 const ignore = ["**/__reftest/**"];
+
+export interface ContentsMap {
+	[name: string]: {
+		gameJson: unknown;
+	};
+}
 
 try {
 	// 1. dist/**/*.zip の作成
@@ -43,19 +49,26 @@ try {
 		const filter = (src: string, _dest: string) => !micromatch.isMatch(src, ignore);
 		await cp(contentsDir, publishDir, { recursive: true, filter });
 
+		const contentsMap: ContentsMap = Object.create(null);
 		const directories = await listGameJsonDirs(rootDir, publishDir);
 
 		for (const directory of directories) {
-			const packageJsonPath = join(rootDir, directory, "package.json");
-			if (existsSync(packageJsonPath)) {
-				console.log(`preparing ${directory}`);
-				const { dependencies } = await readJSON<{ dependencies: Record<string, string> }>(packageJsonPath);
-				if (!dependencies) continue; // devDependencies など実行に必要がないモジュールは無視する
+			const gameJsonPath = join(rootDir, directory, "game.json");
+			const gameJson = await readJSON(gameJsonPath);
+			contentsMap[relative(publishDir, directory)] = { gameJson };
 
-				await exec("npm install --omit=dev --ignore-scripts --no-package-lock", { cwd: join(rootDir, directory) });
-				// TODO: この時点で再度 akashic scan globalScripts をすべきかもしれない
-			}
+			const packageJsonPath = join(rootDir, directory, "package.json");
+			if (!existsSync(packageJsonPath)) continue;
+
+			console.log(`preparing ${directory}`);
+			const { dependencies } = await readJSON<{ dependencies: Record<string, string> }>(packageJsonPath);
+			if (!dependencies) continue; // devDependencies など実行時に参照されないモジュールは無視する
+
+			await exec("npm install --omit=dev --ignore-scripts --no-package-lock", { cwd: join(rootDir, directory) });
+			// TODO: この時点で再度 akashic scan globalScripts をすべきかもしれない
 		}
+
+		await writeFile(join(publishDir, "contents.json"), JSON.stringify(contentsMap));
 	}
 
 	console.log("complete successfully");
