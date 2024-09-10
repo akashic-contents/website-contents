@@ -1,0 +1,6 @@
+{
+  "testType": "all-pc",
+  "targets": [
+    "./contents/**/reftest.entry.json"
+  ]
+}
