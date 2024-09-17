@@ -1,0 +1,257 @@
+{
+  "tickList": [
+    0,
+    1198,
+    [
+      [
+        100,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "start.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        317,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            244.75,
+            284.18359375,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        322,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            244.75,
+            284.18359375,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        323,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "click1.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        459,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            244.75,
+            284.18359375,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        465,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            244.75,
+            284.18359375,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        470,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "click2.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        651,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            244.75,
+            284.18359375,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        656,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            244.75,
+            284.18359375,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        857,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            243.53515625,
+            284.66015625,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        864,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            243.53515625,
+            284.66015625,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        870,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "click3.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        875,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "finish"
+              }
+            }
+          ]
+        ],
+        null
+      ]
+    ]
+  ],
+  "startPoints": [
+    {
+      "frame": 0,
+      "timestamp": 1726550626867,
+      "data": {
+        "seed": 1726550626867,
+        "fps": 30,
+        "startedAt": 1726550626867
+      }
+    }
+  ]
+}

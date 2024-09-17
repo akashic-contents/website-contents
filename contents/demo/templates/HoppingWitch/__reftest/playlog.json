@@ -1,0 +1,250 @@
+{
+  "tickList": [
+    0,
+    492,
+    [
+      [
+        10,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "start.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        67,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            64.52734375,
+            24.60546875,
+            9,
+            0
+          ]
+        ]
+      ],
+      [
+        70,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            64.52734375,
+            24.60546875,
+            0,
+            0,
+            0,
+            0,
+            9,
+            0
+          ]
+        ]
+      ],
+      [
+        80,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "frame1.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        91,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            88.40234375,
+            269.44140625,
+            null,
+            0
+          ],
+          [
+            34,
+            2,
+            "pid1",
+            1,
+            88.40234375,
+            269.44140625,
+            0,
+            -0.25,
+            0,
+            -0.25,
+            null,
+            -1
+          ]
+        ]
+      ],
+      [
+        97,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            88.40234375,
+            269.44140625,
+            0,
+            -0.25,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        117,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            88.40234375,
+            269.19140625,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        123,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            88.40234375,
+            269.19140625,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        144,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            88.40234375,
+            269.19140625,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        150,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            88.40234375,
+            269.19140625,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        350,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "frame2.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        370,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "finish"
+              }
+            }
+          ]
+        ],
+        null
+      ]
+    ]
+  ],
+  "startPoints": [
+    {
+      "frame": 0,
+      "timestamp": 1726548121472,
+      "data": {
+        "seed": 1726548121472,
+        "fps": 30,
+        "startedAt": 1726548121472
+      }
+    }
+  ]
+}
