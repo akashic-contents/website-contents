@@ -1,0 +1,236 @@
+{
+  "tickList": [
+    0,
+    196,
+    [
+      [
+        1,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "start.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        44,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            306.7578125,
+            57.125,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        48,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            306.7578125,
+            57.125,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        78,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            182.1171875,
+            180.09375,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        80,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "frame1.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        82,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            182.1171875,
+            180.09375,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        107,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            413.58203125,
+            168.92578125,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        112,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            413.58203125,
+            168.92578125,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        143,
+        [
+          [
+            33,
+            2,
+            "pid1",
+            1,
+            305.12890625,
+            57.1484375,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        147,
+        [
+          [
+            35,
+            2,
+            "pid1",
+            1,
+            305.12890625,
+            57.1484375,
+            0,
+            0,
+            0,
+            0,
+            null,
+            0
+          ]
+        ]
+      ],
+      [
+        160,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "frame2.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        190,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "finish"
+              }
+            }
+          ]
+        ],
+        null
+      ]
+    ]
+  ],
+  "startPoints": [
+    {
+      "frame": 0,
+      "timestamp": 1726541687615,
+      "data": {
+        "seed": 1726541687615,
+        "fps": 30,
+        "startedAt": 1726541687615
+      }
+    }
+  ]
+}

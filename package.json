@@ -7,6 +7,7 @@
   "author": "DWANGO Co., Ltd.",
   "license": "MIT",
   "scripts": {
+    "prepare": "tsx scripts/prepareInstall.ts",
     "generate": "tsx scripts/generate.ts",
     "format": "prettier . -w",
     "test": "run-s test:*",
