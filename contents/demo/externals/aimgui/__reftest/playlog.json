@@ -1,0 +1,58 @@
+{
+  "tickList": [
+    0,
+    205,
+    [
+      [
+        1,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "screenshot",
+                "options": {
+                  "fileName": "start.png"
+                }
+              }
+            }
+          ]
+        ],
+        null
+      ],
+      [
+        100,
+        [
+          [
+            32,
+            0,
+            "engine-files-reftest-player-id",
+            {
+              "type": "scenario",
+              "sessionId": "dummy-id",
+              "command": {
+                "name": "finish"
+              }
+            }
+          ]
+        ],
+        null
+      ]
+    ]
+  ],
+  "startPoints": [
+    {
+      "frame": 0,
+      "timestamp": 1726538412686,
+      "data": {
+        "seed": 1726538412686,
+        "fps": 30,
+        "startedAt": 1726538412686
+      }
+    }
+  ]
+}
