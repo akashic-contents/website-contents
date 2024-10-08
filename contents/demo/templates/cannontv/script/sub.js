@@ -410,7 +410,7 @@ function createCloudSprite( scene , root) {
 			srcX: bgAnimPtn[i*2][0],
 			srcY: bgAnimPtn[i*2][1],
 			srcWidth: 211,
-			srcHeight: 211,
+			srcHeight: 210,
 			x: bgAnimPtn[i*2+1][0] + 970,
 			y: bgAnimPtn[i*2+1][1] + cmn.SCREEN_HEIGHT * 11,
 		});
@@ -766,6 +766,8 @@ function resetTelop(){
 function createTaguSprite( scene , root) {
 	let tgDB = false;
 	let i = 0;
+  let tgID;
+  let tmpObj;
 	//配置位置
 	const TAGU_TOP = 10;
 	taguCount=0;
@@ -775,9 +777,8 @@ function createTaguSprite( scene , root) {
 			const genCount = (cmn.taguAreaPattern[ areaY ][ areaX ] % 10);
 
 			for( i = 0; i < genCount; i++){
-			let tgID = (cmn.taguAreaPattern[ areaY ][ areaX ] / 10) |0;
+			tgID = (cmn.taguAreaPattern[ areaY ][ areaX ] / 10) |0;
 
-			let tmpObj;
 			let cx,cy,cw,ch;
 
 			if(tgDB == true) {
