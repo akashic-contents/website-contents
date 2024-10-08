@@ -18,6 +18,7 @@ const contentsDir = join(rootDir, "contents");
 const tutorialSamplesDir = join(contentsDir, "tutorial-samples");
 const distDir = join(rootDir, "dist");
 const publishDir = join(rootDir, "public");
+const reftestOutputDir = join(publishDir, "reftest-output");
 const ignore = ["**/__reftest/**"];
 
 export interface ContentsMap {
@@ -45,6 +46,9 @@ try {
 	{
 		await rm(publishDir, { recursive: true, force: true });
 		await mkdir(publishDir, { recursive: true });
+
+		await mkdir(reftestOutputDir);
+		await writeFile(join(reftestOutputDir, ".gitkeep"), "");
 
 		const filter = (src: string, _dest: string) => !micromatch.isMatch(src, ignore);
 		await cp(contentsDir, publishDir, { recursive: true, filter });
