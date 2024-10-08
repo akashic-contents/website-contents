@@ -46,7 +46,7 @@ try {
 	{
 		await rm(publishDir, { recursive: true, force: true });
 		await mkdir(publishDir, { recursive: true });
-
+		// Actions の deploy 実行時に gh-pages ブランチの reftest-output ディレクトリが消えるため、ここでディレクトリを作成している
 		await mkdir(reftestOutputDir);
 		await writeFile(join(reftestOutputDir, ".gitkeep"), "");
 

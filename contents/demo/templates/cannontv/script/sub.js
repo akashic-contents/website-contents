@@ -766,8 +766,8 @@ function resetTelop(){
 function createTaguSprite( scene , root) {
 	let tgDB = false;
 	let i = 0;
-  let tgID;
-  let tmpObj;
+	let tgID;
+	let tmpObj;
 	//配置位置
 	const TAGU_TOP = 10;
 	taguCount=0;
