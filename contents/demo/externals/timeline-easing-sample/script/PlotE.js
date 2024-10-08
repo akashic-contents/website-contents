@@ -21,7 +21,7 @@ const PlotE = /** @class */ (function (_super) {
         _this.value = 0;
         return _this;
     }
-    PlotE.prototype.renderSelf = (renderer, _camera) => {
+    PlotE.prototype.renderSelf = function (renderer, _camera) {
         const axisSize = 4;
         renderer.fillRect(0, 0, this.width, axisSize, "silver");
         renderer.fillRect((this.width - axisSize) / 2, axisSize, axisSize, this.height - axisSize * 2, "silver");
