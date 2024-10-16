@@ -4,6 +4,18 @@
 	"fps": 30,
 	"main": "./script/main.js",
 	"assets": {
+		"se": {
+			"type": "audio",
+			"path": "audio/se",
+			"systemId": "sound",
+			"duration": 250,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
 		"main": {
 			"type": "script",
 			"path": "script/main.js",
@@ -43,7 +55,7 @@
 	},
 	"globalScripts": [],
 	"exportZipInfo": {
-		"version": "1.9.18",
+		"version": "1.9.11",
 		"option": {
 			"strip": true,
 			"babel": true,

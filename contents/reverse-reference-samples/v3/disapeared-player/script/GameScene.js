@@ -32,7 +32,7 @@ function createGameScene(broadcasterId, playerIds, font) {
     broadcasterId: broadcasterId,
     playerIds: playerIds,
     font: font,
-    assetIds: ["handsign_fist", "handsign_victory", "handsign_open"]
+    assetPaths: ["/image/handsign_fist.png", "/image/handsign_victory.png", "/image/handsign_open.png"]
   });
 }
 var GameScene = /** @class */function (_super) {
@@ -70,11 +70,11 @@ var GameScene = /** @class */function (_super) {
   GameScene.prototype.getJankenImageAsset = function (handsign) {
     switch (handsign) {
       case "fist":
-        return this.asset.getImageById("handsign_fist");
+        return this.asset.getImage("/image/handsign_fist.png");
       case "victory":
-        return this.asset.getImageById("handsign_victory");
+        return this.asset.getImage("/image/handsign_victory.png");
       case "open":
-        return this.asset.getImageById("handsign_open");
+        return this.asset.getImage("/image/handsign_open.png");
       default:
       // do nothing
     }
@@ -266,7 +266,7 @@ var GameScene = /** @class */function (_super) {
       }
     });
     // 集計結果に応じた処理
-    // NOTE: ハンドサインを選択しなかったプレイヤーは playerIds に引き継がず、放置プレイヤーは負け扱いとする
+    // NOTE: ハンドサインを選択しなかったプレイヤーは playerIds に引き継がず、放置プレイヤーは負け扱いとなる
     var size = handsigns.size;
     if (size === 2) {
       // ハンドサインが2種類の場合、勝敗が決まる
@@ -285,8 +285,6 @@ var GameScene = /** @class */function (_super) {
     } else if (size === 0) {
       // 参加プレイヤーなし
       // ゲーム終了フェーズへ移行するべき
-    } else {
-      // 到達しない
     }
     return size;
   };
