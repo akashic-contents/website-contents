@@ -280,7 +280,6 @@ var GameScene = /*#__PURE__*/function (_g$Scene) {
           survivedPlayerIds = selection.choki;
         } else if (selection.choki.size === 0) {
           survivedPlayerIds = selection.paa;
-          ;
         } else if (selection.paa.size === 0) {
           survivedPlayerIds = selection.guu;
         }
