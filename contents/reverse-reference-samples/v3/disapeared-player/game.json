@@ -45,8 +45,9 @@
 	"exportZipInfo": {
 		"version": "1.9.11",
 		"option": {
+			"force": true,
 			"strip": true,
-			"babel": true,
+			"babel": false,
 			"targetService": "none"
 		}
 	}
