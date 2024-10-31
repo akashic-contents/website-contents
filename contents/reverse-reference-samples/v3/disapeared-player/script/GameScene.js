@@ -10,9 +10,9 @@ function createGameScene(broadcasterId, playerIds, font) {
         playerIds,
         font,
         assetPaths: [
-            "/image/handsign_fist.png",
-            "/image/handsign_victory.png",
-            "/image/handsign_open.png",
+            "/image/handsign_guu.png",
+            "/image/handsign_choki.png",
+            "/image/handsign_paa.png",
         ]
     });
 }
@@ -42,11 +42,11 @@ class GameScene extends g.Scene {
     getJankenImageAsset(handsign) {
         switch (handsign) {
             case "guu":
-                return this.asset.getImage("/image/handsign_fist.png");
+                return this.asset.getImage("/image/handsign_guu.png");
             case "choki":
-                return this.asset.getImage("/image/handsign_victory.png");
+                return this.asset.getImage("/image/handsign_choki.png");
             case "paa":
-                return this.asset.getImage("/image/handsign_open.png");
+                return this.asset.getImage("/image/handsign_paa.png");
             default:
             // do nothing
         }

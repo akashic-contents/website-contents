@@ -14,28 +14,28 @@
 			"path": "script/GameScene.js",
 			"global": true
 		},
-		"handsign_fist": {
-			"type": "image",
-			"path": "image/handsign_fist.png",
-			"width": 100,
-			"height": 100
-		},
-		"handsign_open": {
-			"type": "image",
-			"path": "image/handsign_open.png",
-			"width": 100,
-			"height": 100
-		},
-		"handsign_victory": {
-			"type": "image",
-			"path": "image/handsign_victory.png",
-			"width": 100,
-			"height": 100
-		},
 		"JankenButton": {
 			"type": "script",
 			"path": "script/JankenButton.js",
 			"global": true
+		},
+		"handsign_choki": {
+			"type": "image",
+			"path": "image/handsign_choki.png",
+			"width": 100,
+			"height": 100
+		},
+		"handsign_guu": {
+			"type": "image",
+			"path": "image/handsign_guu.png",
+			"width": 100,
+			"height": 100
+		},
+		"handsign_paa": {
+			"type": "image",
+			"path": "image/handsign_paa.png",
+			"width": 100,
+			"height": 100
 		}
 	},
 	"environment": {
@@ -43,7 +43,7 @@
 	},
 	"globalScripts": [],
 	"exportZipInfo": {
-		"version": "1.9.11",
+		"version": "1.9.19",
 		"option": {
 			"force": true,
 			"strip": true,
