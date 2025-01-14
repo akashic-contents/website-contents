@@ -181,7 +181,6 @@ class Keyboard extends g.E {
         this.keyboardBack.cssColor = this.backgroundColor;
         this.keyboardBack.modified();
     }
-
     get text() {
         return this.inputtingLabel.text;
     }
