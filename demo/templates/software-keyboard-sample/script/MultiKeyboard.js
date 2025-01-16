@@ -140,18 +140,5 @@ class MultiKeyboard extends Keyboard_1.Keyboard {
         });
         this.common.append(this.convSym);
     }
-    destroy() {
-        super.destroy();
-        this.alphaKey.destroy();
-        this.alphaKey = null;
-        this.symKey.destroy();
-        this.symKey = null;
-        this.convKana.destroy();
-        this.convKana = null;
-        this.convAlpha.destroy();
-        this.convAlpha = null;
-        this.convSym.destroy();
-        this.convSym = null;
-    }
 }
 exports.MultiKeyboard = MultiKeyboard;
