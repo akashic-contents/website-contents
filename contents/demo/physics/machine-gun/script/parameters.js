@@ -19,7 +19,7 @@ const CATEGORY_WALL = 0x0002;
 /** ダメージ描画に使用するフォント */
 exports.DAMAGE_FONT = new g.DynamicFont({
     game: g.game,
-    fontFamily: "monospace",
+    fontFamily: "MPLUSRounded1c-Regular",
     size: 30
 });
 /** 物理世界のプロパティ */
