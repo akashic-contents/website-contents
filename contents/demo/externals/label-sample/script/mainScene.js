@@ -27,7 +27,7 @@ function mainScene() {
         };
         const dfont = new g.DynamicFont({
             game: scene.game,
-            fontFamily: "monospace",
+            fontFamily: "MPLUSRounded1c-Regular",
             size: 40,
             hint: dhint
         });
@@ -240,7 +240,7 @@ function mainScene() {
                     label.font = dfont;
                     label.rubyOptions.rubyFont = new g.DynamicFont({
                         game: scene.game,
-                        fontFamily: "monospace",
+                        fontFamily: "MPLUSRounded1c-Regular",
                         size: 40
                     });
                     label.invalidate();

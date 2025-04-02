@@ -12,7 +12,7 @@ function main(_param) {
         const font = new g.DynamicFont({
             game: g.game,
             size: 13,
-            fontFamily: "monospace",
+            fontFamily: "MPLUSRounded1c-Regular",
             fontColor: "white"
         });
         const guiE = new aimgui.GuiE({

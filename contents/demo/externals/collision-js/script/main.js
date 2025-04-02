@@ -904,7 +904,7 @@ function main(_param) {
         const cutinDuration = 12;
         const font = new g.DynamicFont({
             game: g.game,
-            fontFamily: "monospace",
+            fontFamily: "MPLUSRounded1c-Regular",
             size: 14,
         });
         const demoRoot = new g.E({ scene });

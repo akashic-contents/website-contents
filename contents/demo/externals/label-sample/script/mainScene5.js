@@ -32,7 +32,7 @@ function mainScene5() {
         };
         const dfont = new g.DynamicFont({
             game: scene.game,
-            fontFamily: "monospace",
+            fontFamily: "MPLUSRounded1c-Regular",
             size: 40,
             hint: dhint
         });
