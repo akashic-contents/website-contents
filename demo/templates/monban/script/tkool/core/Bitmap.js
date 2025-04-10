@@ -8,7 +8,7 @@ function registerFont(fontSize, fontColor) {
     if (fontColor === void 0) { fontColor = "#ffffff"; }
     var font = new g.DynamicFont({
         game: g.game,
-        fontFamily: "sans-serif",
+        fontFamily: "MPLUSRounded1c-Regular",
         size: fontSize,
         fontColor: fontColor,
         strokeWidth: 4,

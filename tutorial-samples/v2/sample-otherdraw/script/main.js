@@ -7,7 +7,7 @@ function main(param) {
 		// 文字列の表示
 		var font = new g.DynamicFont({
 			game: g.game,
-			fontFamily: g.FontFamily.SansSerif,
+			fontFamily: "MPLUSRounded1c-Regular",
 			size: 15
 		});
 		var label = new g.Label({
