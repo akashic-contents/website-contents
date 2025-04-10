@@ -98,7 +98,7 @@ function makeShot(scene, point) {
 
 function gameOver(scene) {
 	const dfont = new g.DynamicFont({
-		fontFamily: "serif",
+		fontFamily: "MPLUSRounded1c-Regular",
 		size: 80,
 		game: scene.game
 	});

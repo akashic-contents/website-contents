@@ -138,7 +138,7 @@ class DemoScene extends g.Scene {
     onLoaded() {
         this.font = new g.DynamicFont({
             game: g.game,
-            fontFamily: g.FontFamily.Monospace,
+            fontFamily: "MPLUSRounded1c-Regular",
             fontColor: "#FF8080",
             strokeWidth: 4,
             strokeColor: "#000FF",

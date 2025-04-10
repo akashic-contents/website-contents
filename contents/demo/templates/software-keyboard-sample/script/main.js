@@ -27,7 +27,7 @@ function main() {
     scene.onLoad.add(() => {
         const font = new g.DynamicFont({
             game: game,
-            fontFamily: "sans-serif",
+            fontFamily: "MPLUSRounded1c-Regular",
             size: 50,
             fontWeight: 1
         });

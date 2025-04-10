@@ -15,7 +15,7 @@ exports.FONT_SIZE = 36;
 /**
  * フォントファミリー
  */
-exports.FONT_FAMILY = g.FontFamily.SansSerif;
+exports.FONT_FAMILY = "MPLUSRounded1c-Regular";
 /**
  * 背景の色
  */

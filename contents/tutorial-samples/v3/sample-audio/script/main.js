@@ -17,7 +17,7 @@ function main(param) {
 
 const font = new g.DynamicFont({
 	game: g.game,
-	fontFamily: "sans-serif",
+	fontFamily: "MPLUSRounded1c-Regular",
 	size: 48
 });
 
