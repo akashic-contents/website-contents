@@ -7,8 +7,9 @@ function main(param) {
 	scene.onLoad.add(() => {
 		// クリックで音を鳴らす
 		const soundRect = createButtonRect(scene, 50, 50, "green", "SE");
+		const seAsset = scene.asset.getAudio("/audio/se");
 		soundRect.onPointDown.add(() => {
-			scene.asset.getAudio("/audio/se").play();
+			g.game.audio.play(seAsset);
 		});
 		scene.append(soundRect);
 	});
