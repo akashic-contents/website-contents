@@ -919,6 +919,7 @@ function setSndF( flg ) {
 
 //サウンド関連
 var currentBGMname = null;
+var currentBGM = null;
 //曲再生
 //IN:曲名ID nullまたは""の場合stopBGMを呼び出す
 function playBGM ( bgmName ) {
@@ -933,7 +934,8 @@ function playBGM ( bgmName ) {
 	currentBGMname = bgmName;
 
 	var nowScene = game.scene();
-	nowScene.asset.getAudio(currentBGMname).play();
+	const bgmAsset = nowScene.asset.getAudio(currentBGMname);
+  currentBGM = g.game.audio.play(bgmAsset);
 	bgm_flg = true;
 
 }
@@ -946,12 +948,12 @@ function rePlayBGM ( ) {
 //再生中曲停止
 function stopBGM () {
 
-	if( currentBGMname == null )return;
+	if( currentBGMname == null || currentBGM == null ) return;
 
-	var nowScene = game.scene();
-	nowScene.asset.getAudio(currentBGMname).stop();
+  currentBGM.stop();
 //	currentBGMname = null;
 	bgm_flg = false;
+  currentBGM = null;
 }
 
 //SE/ジングル再生
@@ -960,7 +962,8 @@ function playSE ( seName ) {
 	if( !getSndF() )return;
 
 	var nowScene = game.scene();
-	nowScene.asset.getAudio(seName).play();
+  const seAsset = nowScene.asset.getAudio(seName);
+  g.game.audio.play(seAsset);
 }
 
 

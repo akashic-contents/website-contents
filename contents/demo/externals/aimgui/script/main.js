@@ -2,6 +2,8 @@ const aimgui = require("@akashic-extension/aimgui");
 function main(_param) {
     const scene = new g.Scene({ game: g.game, assetPaths: ["/audio/se"] });
     scene.onLoad.add(() => {
+        const seAsset = scene.asset.getAudio("/audio/se");
+        const se = g.game.audio.create(seAsset);
         const background = new g.FilledRect({
             scene: scene,
             cssColor: "#2C7CFF",
@@ -94,7 +96,8 @@ function main(_param) {
                         console.log(`Volume slider value ${valueObject.sliderValue}`);
                     }
                     if (gui.button("Sound Test")) {
-                        scene.asset.getAudio("/audio/se").play().changeVolume(valueObject.sliderValue);
+                        se.changeVolume(valueObject.sliderValue);
+                        se.play();
                         console.log("sound-test Button clicked");
                     }
                 });
