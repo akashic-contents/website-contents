@@ -6,7 +6,7 @@ function main(param) {
 	});
 	scene.onLoad.add(() => {
 		// ここからゲーム内容を記述します
-    const seAsset = scene.asset.getAudio("/audio/se");
+		const seAsset = scene.asset.getAudio("/audio/se");
 
 		// プレイヤーを生成します
 		const player = new g.Sprite({

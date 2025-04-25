@@ -935,7 +935,7 @@ function playBGM ( bgmName ) {
 
 	var nowScene = game.scene();
 	const bgmAsset = nowScene.asset.getAudio(currentBGMname);
-  currentBGM = g.game.audio.play(bgmAsset);
+	currentBGM = g.game.audio.play(bgmAsset);
 	bgm_flg = true;
 
 }
@@ -950,10 +950,10 @@ function stopBGM () {
 
 	if( currentBGMname == null || currentBGM == null ) return;
 
-  currentBGM.stop();
+	currentBGM.stop();
 //	currentBGMname = null;
 	bgm_flg = false;
-  currentBGM = null;
+	currentBGM = null;
 }
 
 //SE/ジングル再生
@@ -962,8 +962,8 @@ function playSE ( seName ) {
 	if( !getSndF() )return;
 
 	var nowScene = game.scene();
-  const seAsset = nowScene.asset.getAudio(seName);
-  g.game.audio.play(seAsset);
+	const seAsset = nowScene.asset.getAudio(seName);
+	g.game.audio.play(seAsset);
 }
 
 
