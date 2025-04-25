@@ -6,6 +6,7 @@ function main(param) {
 	});
 	scene.onLoad.add(() => {
 		// ここからゲーム内容を記述します
+		const seAsset = scene.asset.getAudio("/audio/se");
 
 		// プレイヤーを生成します
 		const player = new g.Sprite({
@@ -29,7 +30,7 @@ function main(param) {
 
 		// 画面をタッチしたとき、SEを鳴らします
 		scene.onPointDownCapture.add(() => {
-			scene.asset.getAudio("/audio/se").play();
+			g.game.audio.play(seAsset);
 
 			// プレイヤーが発射する弾を生成します
 			const shot = new g.Sprite({
