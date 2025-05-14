@@ -2,7 +2,7 @@ const game = g.game;
 module.exports = function () {
     const scene = new g.Scene({
         game: game,
-        assetPaths: ["/image/switch.png"]
+        assetPaths: ["/image/switch.png", "/audio/bgm1"]
     });
 
     scene.onLoad.add(() => {
@@ -13,6 +13,10 @@ module.exports = function () {
             width: game.width,
             height: game.height
         });
+
+        // bgm1 の AudioPlayContext を作成
+        const bgm1Asset = scene.asset.getAudio("/audio/bgm1");
+        const bgm1 = g.game.audio.create(bgm1Asset);
 
         // スイッチのフレームスプライトを生成
         const sw = new g.FrameSprite({
@@ -48,8 +52,10 @@ module.exports = function () {
             sw.modified();
 
             if (back.visible()) {
+                bgm1.play(); // bgm の AudioPlayContext を再生
                 back.hide();
             } else {
+                bgm1.stop(); // bgm の AudioPlayContext を停止
                 back.show();
             }
         });
