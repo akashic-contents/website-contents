@@ -16,6 +16,18 @@
 			"width": 96,
 			"height": 48,
 			"path": "image/switch.png"
+		},
+		"bgm1": {
+			"type": "audio",
+			"path": "audio/bgm1",
+			"systemId": "sound",
+			"duration": 36227,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
 		}
 	},
 	"environment": {
