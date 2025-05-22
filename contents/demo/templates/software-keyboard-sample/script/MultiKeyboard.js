@@ -78,13 +78,13 @@ class MultiKeyboard extends Keyboard_1.Keyboard {
             this.symKey.append(key);
         }
         const convKanaAsset = this.scene.asset.getImage("/image/toKanaLetters.png");
-        this.convKana = new g.Pane({
+        this.convKana = new g.Sprite({
             scene: this.scene,
             width: convKanaAsset.width,
             height: convKanaAsset.height,
             x: def.convX[0],
             y: def.convY,
-            backgroundImage: convKanaAsset,
+            src: convKanaAsset,
             touchable: true,
             hidden: true
         });
@@ -100,13 +100,13 @@ class MultiKeyboard extends Keyboard_1.Keyboard {
         });
         this.common.append(this.convKana);
         const convAlphaAsset = this.scene.asset.getImage("/image/toAlphaLetters.png");
-        this.convAlpha = new g.Pane({
+        this.convAlpha = new g.Sprite({
             scene: this.scene,
             width: convAlphaAsset.width,
             height: convAlphaAsset.height,
             x: def.convX[0],
             y: def.convY,
-            backgroundImage: convAlphaAsset,
+            src: convAlphaAsset,
             touchable: true
         });
         this.convAlpha.onPointDown.add(() => {
@@ -119,13 +119,13 @@ class MultiKeyboard extends Keyboard_1.Keyboard {
         });
         this.common.append(this.convAlpha);
         const convSymAsset = this.scene.asset.getImage("/image/toSymLetters.png");
-        this.convSym = new g.Pane({
+        this.convSym = new g.Sprite({
             scene: this.scene,
             width: convSymAsset.width,
             height: convSymAsset.height,
             x: def.convX[1],
             y: def.convY,
-            backgroundImage: convSymAsset,
+            src: convSymAsset,
             touchable: true
         });
         this.convSym.onPointDown.add(() => {

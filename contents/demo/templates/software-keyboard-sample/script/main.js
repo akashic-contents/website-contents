@@ -71,26 +71,26 @@ function main() {
         let state = 1 /* OFF */;
         const openAsset = scene.asset.getImage("/image/open.png");
         const closeAsset = scene.asset.getImage("/image/close.png");
-        const keyboardButton = new g.Pane({
+        const keyboardButton = new g.Sprite({
             scene: scene,
             width: openAsset.width,
             height: openAsset.height,
             x: g.game.width / 2 - openAsset.width / 2,
             y: 610,
-            backgroundImage: openAsset,
+            src: openAsset,
             touchable: true
         });
         keyboardButton.onPointDown.add(() => {
             switch (state) {
                 case 1 /* OFF */:
-                    keyboardButton.backgroundImage = closeAsset;
+                    keyboardButton.src = closeAsset;
                     timeline.create(keyboard).moveTo(0, 0, 150);
                     state = 0 /* ON */;
                     break;
                 case 0 /* ON */:
                     name.text = keyboard.text;
                     name.invalidate();
-                    keyboardButton.backgroundImage = openAsset;
+                    keyboardButton.src = openAsset;
                     timeline.create(keyboard).moveTo(0, g.game.height, 150);
                     state = 1 /* OFF */;
                     break;
