@@ -153,13 +153,13 @@ class Keyboard extends g.E {
         });
         this.kanaKey.append(semiVoicedKey);
         const backSpaceKeyAsset = this.sceneAssets.getImage("/image/backSpaceKey.png");
-        this.backSpaceKey = new g.Pane({
+        this.backSpaceKey = new g.Sprite({
             scene: this.scene,
             width: backSpaceKeyAsset.width,
             height: backSpaceKeyAsset.height,
             x: g.game.width - 28 - backSpaceKeyAsset.width,
             y: this.inputtingLabelBack.y + (this.inputtingLabelBack.height - backSpaceKeyAsset.height) / 2,
-            backgroundImage: backSpaceKeyAsset,
+            src: backSpaceKeyAsset,
             touchable: true
         });
         this.backSpaceKey.onPointDown.add(() => {
