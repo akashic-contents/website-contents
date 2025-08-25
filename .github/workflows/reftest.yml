@@ -1,0 +1,92 @@
+name: Reftest
+
+on:
+  workflow_dispatch:
+    inputs:
+      config_path:
+        description: "Path of reftest config"
+        required: false
+        default: "reftest.config.json"
+  schedule:
+    # 平日9時15分(JST)に実行
+    - cron: "15 0 * * 1-5"
+
+env:
+  BUILD_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+  RESULT_URL: "https://akashic-contents.github.io/website-contents/reftest-output"
+  OUTPUT_HTML_DIR: "/tmp/reftest-output-tmp"
+  ERROR_SCREENSHOTS_DIR: "/tmp/error-screenshots"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reftest:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup locale for Japanese
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y language-pack-ja fonts-noto-cjk
+          sudo locale-gen ja_JP.UTF-8
+
+      - name: Build contents
+        run: npm ci
+
+      - name: Run reftest
+        run: |
+          # engine-files-reftest実行時になぜかchromedriverのインストールが行われてしまうため--chromedriver-skip-installオプションを追加
+          npx --chromedriver-skip-install @akashic/engine-files-reftest@latest -- --output-html ${{ env.OUTPUT_HTML_DIR }} --configure ${{ inputs.config_path || 'reftest.config.json' }} --timeout-error-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }} --error-screenshot-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }}
+
+      - name: Upload result
+        if: always()
+        run: |
+          git checkout .
+          git checkout gh-pages
+          rm -rf reftest-output/*
+          cp -rp ${{ env.OUTPUT_HTML_DIR }}/* reftest-output/
+          git add reftest-output
+          if [[ -n "$(git diff --cached --shortstat)" ]]; then
+            git config user.name 'github-actions'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m "Save Reftest Output (Build Url: ${{ env.BUILD_URL }} )"
+            git push origin gh-pages
+          fi
+
+      # エラー時のスクリーンショット画像をアップロード
+      - name: Upload error screenshots
+        if: failure()
+        id: upload_error_screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-screenshots
+          path: ${{ env.ERROR_SCREENSHOTS_DIR }}
+          if-no-files-found: ignore
+
+      #-- Slack通知 --#
+      # 成功
+      - name: Notify Slack on success
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"attachments": [{"color": "#00ff00","pretext": "Reftest Result(${{ github.repository }}): ${{ env.RESULT_URL }}", "fields":[{"title":"SUCCEED","value":"BUILD: ${{ env.BUILD_URL }}","short":false}]}]}' ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      # 失敗
+      - name: Notify Slack on failure with artifact link
+        if: failure()
+        run: |
+          ARTIFACT_URL=""
+          if [ -n "${{ steps.upload_error_screenshots.outputs.artifact-id }}" ]; then
+            ARTIFACT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.upload_error_screenshots.outputs.artifact-id }}"
+          fi
+          curl -X POST -H 'Content-type: application/json' --data '{"attachments": [{"color": "#ff0000","pretext": "Reftest Result(${{ github.repository }}): ${{ env.RESULT_URL }}", "fields":[{"title":"FAILED","value":"BUILD: ${{ env.BUILD_URL }}\nError Screenshots: '"${ARTIFACT_URL}"'","short":false}]}]}' ${{ secrets.SLACK_WEBHOOK_URL }}
