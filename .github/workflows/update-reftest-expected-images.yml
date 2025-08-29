@@ -57,6 +57,8 @@ jobs:
 
       - name: Update Expected Images
         run: |
+          BASE_BRANCH=${GITHUB_REF#refs/heads/}
+          TARGET_BRANCH=github-actions/update-expected-images-$(date +'%Y%m%d-%H%M%S')
           git checkout $TARGET_BRANCH 2>/dev/null || git checkout -b $TARGET_BRANCH
           git add */expected/*
           if [[ -n "$(git diff --cached --shortstat)" ]]; then
@@ -64,11 +66,16 @@ jobs:
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git commit -m "Update Expected Images (Build Url: ${{ env.BUILD_URL }} )"
             git push origin $TARGET_BRANCH -f
+            gh pr create \
+              --title "Update reftest expected images" \
+              --body "This PR updates the reftest expected images." \
+              --base $BASE_BRANCH \
+              --head $TARGET_BRANCH
           else
             echo "正解画像更新の必要がなかったためスキップ"
           fi
         env:
-          TARGET_BRANCH: github-actions/update-expected-images
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # エラー時のスクリーンショット画像をアップロード
       - name: Upload error screenshots
