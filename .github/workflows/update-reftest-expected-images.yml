@@ -49,7 +49,7 @@ jobs:
           # engine-files-reftest実行時になぜかchromedriverのインストールが行われてしまうため--chromedriver-skip-installオプションを追加
           CMD="npx --chromedriver-skip-install @akashic/engine-files-reftest@latest -- --configure ${{ inputs.config_path || 'reftest.config.json' }} --timeout-error-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }} --error-screenshot-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }}"
           if [[ "${{ inputs.update_only_diff }}" == "true" ]]; then
-            CMD="$CMD --update-only-diff"
+            CMD="$CMD --update-diff"
           else
             CMD="$CMD --update"
           fi
