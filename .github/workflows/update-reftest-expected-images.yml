@@ -21,17 +21,20 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   reftest:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
           fetch-depth: 0
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
 
@@ -47,13 +50,15 @@ jobs:
       - name: Run reftest
         run: |
           # engine-files-reftest実行時になぜかchromedriverのインストールが行われてしまうため--chromedriver-skip-installオプションを追加
-          CMD="npx --chromedriver-skip-install @akashic/engine-files-reftest@latest -- --configure ${{ inputs.config_path || 'reftest.config.json' }} --timeout-error-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }} --error-screenshot-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }}"
+          CMD="npx --chromedriver-skip-install @akashic/engine-files-reftest@latest -- --configure ${CONFIG_PATH} --timeout-error-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }} --error-screenshot-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }}"
           if [[ "${{ inputs.update_only_diff }}" == "true" ]]; then
             CMD="$CMD --update-diff"
           else
             CMD="$CMD --update"
           fi
           eval $CMD
+        env:
+          CONFIG_PATH: ${{ inputs.config_path || 'reftest.config.json' }}
 
       - name: Update Expected Images
         run: |
@@ -64,7 +69,7 @@ jobs:
           if [[ -n "$(git diff --cached --shortstat)" ]]; then
             git config user.name 'github-actions'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m "Update Expected Images (Build Url: ${{ env.BUILD_URL }} )"
+            git commit -m "Update Expected Images (Build Url: ${BUILD_URL} )"
             git push origin $TARGET_BRANCH -f
             gh pr create \
               --title "Update reftest expected images" \
@@ -81,7 +86,7 @@ jobs:
       - name: Upload error screenshots
         if: failure()
         id: upload_error_screenshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: error-screenshots
           path: ${{ env.ERROR_SCREENSHOTS_DIR }}
