@@ -12,9 +12,6 @@ on:
     - cron: "15 0 * * 1-5"
 
 env:
-  GITHUB_REPOSITORY: ${{ github.repository }}
-  GITHUB_RUN_ID: ${{ github.run_id }}
-  GITHUB_SERVER_URL: ${{ github.server_url }}
   BUILD_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
   RESULT_URL: "https://akashic-contents.github.io/website-contents/reftest-output"
   OUTPUT_HTML_DIR: "/tmp/reftest-output-tmp"
