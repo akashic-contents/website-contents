@@ -50,7 +50,7 @@ jobs:
       - name: Run reftest
         run: |
           # engine-files-reftest実行時になぜかchromedriverのインストールが行われてしまうため--chromedriver-skip-installオプションを追加
-          npx --chromedriver-skip-install @akashic/engine-files-reftest@latest -- --output-html ${{ env.OUTPUT_HTML_DIR }} --configure ${CONFIG_PATH} --timeout-error-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }} --error-screenshot-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }}
+          npx --chromedriver-skip-install @akashic/engine-files-reftest@latest -- --output-html "${OUTPUT_HTML_DIR}" --configure "${CONFIG_PATH}" --timeout-error-dir-path "${ERROR_SCREENSHOTS_DIR}" --error-screenshot-dir-path "${ERROR_SCREENSHOTS_DIR}"
         env:
           CONFIG_PATH: ${{ inputs.config_path || 'reftest.config.json' }}
 
@@ -60,7 +60,7 @@ jobs:
           git checkout .
           git checkout gh-pages
           rm -rf reftest-output/*
-          cp -rp ${{ env.OUTPUT_HTML_DIR }}/* reftest-output/
+          cp -rp ${OUTPUT_HTML_DIR}/* reftest-output/
           git add reftest-output
           if [[ -n "$(git diff --cached --shortstat)" ]]; then
             git config user.name 'github-actions'
@@ -84,7 +84,9 @@ jobs:
       - name: Notify Slack on success
         if: success()
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"attachments": [{"color": "#00ff00","pretext": "Reftest Result(${{ github.repository }}): ${{ env.RESULT_URL }}", "fields":[{"title":"SUCCEED","value":"BUILD: ${{ env.BUILD_URL }}","short":false}]}]}' ${{ secrets.SLACK_WEBHOOK_URL }}
+          curl -X POST -H 'Content-type: application/json' --data '{"attachments": [{"color": "#00ff00","pretext": "Reftest Result('"${GITHUB_REPOSITORY}"'): '"${RESULT_URL}"'", "fields":[{"title":"SUCCEED","value":"BUILD: '"${BUILD_URL}"'","short":false}]}]}' ${SLACK_WEBHOOK_URL}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_GYOMUKAIZEN }}
 
       # 失敗
       - name: Notify Slack on failure with artifact link
@@ -92,8 +94,9 @@ jobs:
         run: |
           ARTIFACT_URL=""
           if [ -n "${STEPS_UPLOAD_ERROR_SCREENSHOTS_OUTPUTS_ARTIFACT_ID}" ]; then
-            ARTIFACT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${STEPS_UPLOAD_ERROR_SCREENSHOTS_OUTPUTS_ARTIFACT_ID}"
+            ARTIFACT_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts/${STEPS_UPLOAD_ERROR_SCREENSHOTS_OUTPUTS_ARTIFACT_ID}"
           fi
-          curl -X POST -H 'Content-type: application/json' --data '{"attachments": [{"color": "#ff0000","pretext": "Reftest Result(${{ github.repository }}): ${{ env.RESULT_URL }}", "fields":[{"title":"FAILED","value":"BUILD: ${{ env.BUILD_URL }}\nError Screenshots: '"${ARTIFACT_URL}"'","short":false}]}]}' ${{ secrets.SLACK_WEBHOOK_URL }}
+          curl -X POST -H 'Content-type: application/json' --data '{"attachments": [{"color": "#ff0000","pretext": "Reftest Result('"${GITHUB_REPOSITORY}"'): '"${RESULT_URL}"'", "fields":[{"title":"FAILED","value":"BUILD: '"${BUILD_URL}"'\nError Screenshots: '"${ARTIFACT_URL}"'","short":false}]}]}' ${SLACK_WEBHOOK_URL}
         env:
           STEPS_UPLOAD_ERROR_SCREENSHOTS_OUTPUTS_ARTIFACT_ID: ${{ steps.upload_error_screenshots.outputs.artifact-id }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_GYOMUKAIZEN }}

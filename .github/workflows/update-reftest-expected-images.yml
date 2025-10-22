@@ -23,6 +23,7 @@ concurrency:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   reftest:
@@ -50,8 +51,8 @@ jobs:
       - name: Run reftest
         run: |
           # engine-files-reftest実行時になぜかchromedriverのインストールが行われてしまうため--chromedriver-skip-installオプションを追加
-          CMD="npx --chromedriver-skip-install @akashic/engine-files-reftest@latest -- --configure ${CONFIG_PATH} --timeout-error-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }} --error-screenshot-dir-path ${{ env.ERROR_SCREENSHOTS_DIR }}"
-          if [[ "${{ inputs.update_only_diff }}" == "true" ]]; then
+          CMD="npx --chromedriver-skip-install @akashic/engine-files-reftest@latest -- --configure '"${CONFIG_PATH}"' --timeout-error-dir-path '"${ERROR_SCREENSHOTS_DIR}"' --error-screenshot-dir-path '"${ERROR_SCREENSHOTS_DIR}"'"
+          if [[ "${UPDATE_ONLY_DIFF}" == "true" ]]; then
             CMD="$CMD --update-diff"
           else
             CMD="$CMD --update"
@@ -59,6 +60,7 @@ jobs:
           eval $CMD
         env:
           CONFIG_PATH: ${{ inputs.config_path || 'reftest.config.json' }}
+          UPDATE_ONLY_DIFF: ${{ inputs.update_only_diff }}
 
       - name: Update Expected Images
         run: |
