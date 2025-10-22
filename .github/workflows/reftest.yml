@@ -86,7 +86,7 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"attachments": [{"color": "#00ff00","pretext": "Reftest Result('"${GITHUB_REPOSITORY}"'): '"${RESULT_URL}"'", "fields":[{"title":"SUCCEED","value":"BUILD: '"${BUILD_URL}"'","short":false}]}]}' ${SLACK_WEBHOOK_URL}
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_GYOMUKAIZEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
       # 失敗
       - name: Notify Slack on failure with artifact link
@@ -99,4 +99,4 @@ jobs:
           curl -X POST -H 'Content-type: application/json' --data '{"attachments": [{"color": "#ff0000","pretext": "Reftest Result('"${GITHUB_REPOSITORY}"'): '"${RESULT_URL}"'", "fields":[{"title":"FAILED","value":"BUILD: '"${BUILD_URL}"'\nError Screenshots: '"${ARTIFACT_URL}"'","short":false}]}]}' ${SLACK_WEBHOOK_URL}
         env:
           STEPS_UPLOAD_ERROR_SCREENSHOTS_OUTPUTS_ARTIFACT_ID: ${{ steps.upload_error_screenshots.outputs.artifact-id }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_GYOMUKAIZEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
