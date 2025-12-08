@@ -32,8 +32,7 @@ jobs:
         run: |
           git checkout .
           git checkout gh-pages
-          # reftest-outputとpublic以外を削除
-          find . -maxdepth 1 ! -name 'reftest-output' ! -name 'public' ! -name '.' -exec rm -rf {} +
+          find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.' -exec rm -rf {} +
           mv public/* ./
           rm -rf public
           git add .
