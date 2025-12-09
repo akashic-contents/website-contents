@@ -32,7 +32,7 @@ jobs:
         run: |
           git checkout .
           git checkout gh-pages
-          find . -maxdepth 1 ! -name 'public' ! -name '.git' ! -name '.' -exec rm -rf {} +
+          find . -maxdepth 1 ! -name 'public' ! -name '.nojekyll' ! -name '.git' ! -name '.' -exec rm -rf {} +
           mv public/* ./
           rm -rf public
           git add .
