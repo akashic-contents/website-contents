@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
-          persist-credentials: false
+          fetch-depth: 0
       - name: Setup Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
@@ -29,7 +29,16 @@ jobs:
           npm run generate
           npm test
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+        run: |
+          git checkout .
+          git checkout gh-pages
+          find . -maxdepth 1 ! -name 'public' ! -name '.nojekyll' ! -name '.git' ! -name '.' -exec rm -rf {} +
+          mv public/* ./
+          rm -rf public
+          git add .
+          if [[ -n "$(git diff --cached --shortstat)" ]]; then
+            git config user.name 'github-actions'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m "deploy Github Pages"
+            git push origin gh-pages
+          fi
