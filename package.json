@@ -13,6 +13,13 @@
     "test": "run-s test:*",
     "test:format": "prettier . --check"
   },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": "11.11.0",
+      "onFail": "error"
+    }
+  },
   "devDependencies": {
     "@types/archiver": "^6.0.2",
     "@types/micromatch": "^4.0.9",
